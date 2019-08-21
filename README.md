@@ -21,7 +21,9 @@ if you request for list of waste collector, it would contain json data for all r
 |---|---|---|---|
 |`{main url}/login` | email, password | post | `{ "token" : "hash token xxxxx.xxxxx.xxxxx" }` |
 |`{main url}/register` | name, email, password, phone, role_id | post | `{ "token" : "hash token xxxxx.xxxxx.xxxxx" }` | 
-|`{main url}/household/list` | token | get | `{ "name": "bill tanthowi jauhari", "address":"malang", "phone":"082xxxxx", "lat":"-7000.3", "long":"+733.4", "duration_time":"30" }` |
+|`{main url}/household/list` | token | get | `[{ "name": "bill tanthowi jauhari", "address":"malang", "phone":"082xxxxx", "lat":"-7000.3", "long":"+733.4", "duration_time":"30", "photo":"xxx.jpg" }]` |
+|`{main url}/household/list/{id}`| token, id | get | `{ "name": "bill tanthowi jauhari", "address":"malang", "phone":"082xxxxx", "lat":"-7000.3", "long":"+733.4", "duration_time":"30","photo":"xxx.jpg" }`|
+|`{main url}/household/save`| token | post | `[]`|
 
 
 to access all url except login and register, you need to pass token in url with query string `token` eg : `mc3.tokoandalan.com/household/list?token=xxx.xxx.xxx`
