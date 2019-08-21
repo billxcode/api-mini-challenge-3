@@ -22,7 +22,7 @@ class HouseHoldController extends Controller
 
 
         $token = $request->token;
-        $jwt = JWT::decode($token, env('SECRET_KEY'), 'HS256');
+        $jwt = JWT::decode($token, env('SECRET_KEY'), ['HS256']);
         $this->user = User::where('email', $jwt)->first();
     }
 
@@ -40,7 +40,7 @@ class HouseHoldController extends Controller
 
     public function storeProfileHouseHold(Request $request)
     {
-        $data = $request;
+        $data = $request->all();
 
         if ($request->has('photo')) {
             $img = $request->file('photo');
@@ -50,6 +50,10 @@ class HouseHoldController extends Controller
         }
 
         $data['auth_id'] = $this->user->id;
+
+        HouseHold::create($data);
+
+        return $data;
 
     }
 }
