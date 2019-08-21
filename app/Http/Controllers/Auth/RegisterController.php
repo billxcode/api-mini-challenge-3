@@ -15,11 +15,11 @@ class RegisterController extends Controller
 {
     public function register(Request $request)
     {
-        $validator = $request;
+        $validator = $request->all();
 
         $user = User::where('email', $validator['email'])->first();
 
-        if (empty($user))
+        if (!empty($user))
         {
             $this->data['message'] = 'Email is already register';
             return response()->json($this->data, 400);
@@ -38,6 +38,6 @@ class RegisterController extends Controller
             'token' => $jwt
         ];
 
-        return reponse()->json($this->data, 200);
+        return response()->json($this->data, 200);
     }
 }
