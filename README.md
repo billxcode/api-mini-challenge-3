@@ -1,4 +1,4 @@
-# api-mini-challenge-3
+# API Mini Challenge 3
 
 ## Documentation
 
