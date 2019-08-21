@@ -40,7 +40,12 @@ class HouseHoldController extends Controller
 
     public function storeProfileHouseHold(Request $request)
     {
-        $data = $request->all();
+        $data = $request->only([
+            'address',
+            'lat',
+            'long',
+            'photo'
+        ]);
 
         if ($request->has('photo')) {
             $img = $request->file('photo');
@@ -49,11 +54,25 @@ class HouseHoldController extends Controller
             $data['photo'] = $name;
         }
 
-        $data['auth_id'] = $this->user->id;
+        $data['auth_id'] = $this->user->ID;
 
-        HouseHold::create($data);
+        $household = HouseHold::where('auth_id', $data['auth_id'])->first();
 
-        return $data;
+        if (!$household) {
+            $household = HouseHold::create($data);
+        }else{
+            $household = HouseHold::where('auth_id', $data['auth_id'])->update($data);
+        }
+
+        if (!$household) {
+            return response()->json($this->data, 400);
+        }
+
+        $this->data['success'] = true;
+        $this->data['message'] = 'Success save profile';
+        $this->data['response'] = 200;
+
+        return response()->json($this->data, 200);
 
     }
 }

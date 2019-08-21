@@ -20,4 +20,6 @@ $router->post('/login', 'Auth\LoginController@login');
 
 $router->group(['prefix' => '/household'], function () use ($router) {
     $router->get('/list', 'HouseHoldController@getListHouseHold');
+    $router->get('/list/{id}', 'HouseHoldController@getDetailHouseHold');
+    $router->post('/save', 'HouseHoldController@storeProfileHouseHold');
 });
