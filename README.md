@@ -22,4 +22,4 @@ if you request for list of waste collector, it would contain json data for all r
 |{main url}/login | none | post | `{ "token" : "hash token xxxxx.xxxxx.xxxxx" }` |
 |{main url}/register | none | post | `{ "token" : "hash token xxxxx.xxxxx.xxxxx" }` | 
 |{main url}/household/list | token | get | `{}` |
--------------------------------------------------
+
