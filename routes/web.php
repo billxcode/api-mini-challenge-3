@@ -23,3 +23,9 @@ $router->group(['prefix' => '/household'], function () use ($router) {
     $router->get('/list/{id}', 'HouseHoldController@getDetailHouseHold');
     $router->post('/save', 'HouseHoldController@storeProfileHouseHold');
 });
+
+$router->group(['prefix' => '/wastecollector'], function () use ($router) {
+    $router->get('/list', 'WasteCollectorController@getListWasteCollector');
+    $router->get('/list/{id}', 'WasteCollectorontroller@getDetailWasteCollector');
+    $router->post('/save', 'WasteCollectorController@storeProfileWasteCollector');
+});
